@@ -1,7 +1,7 @@
 import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "@typescript-eslint/eslint-plugin";
-// import pluginReact from "eslint-plugin-react";
+import pluginReact from "eslint-plugin-react";
 import pluginAstro from "eslint-plugin-astro";
 import prettier from "eslint-config-prettier";
 import { defineConfig } from "eslint/config";
@@ -24,8 +24,8 @@ export default defineConfig([
   // Configuración de TypeScript
   tseslint.configs.recommended,
 
-  // // Configuración de React
-  // pluginReact.configs.flat.recommended,
+  // Configuración de React
+  pluginReact.configs.flat.recommended,
 
   // Configuración específica para Astro
   {
