@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import Foto from "../assets/Sergio.png";
+import { Icon } from "astro-icon/components";
+---
+
+<aside
+  class="border-1 border-neutral-400 rounded-3xl text-white p-5 fixed left-0 top-0 h-[95vh] w-1/4 m-5 space-y-10"
+>
+  <div class="flex flex-col items-end">
+    <h1 class="font-bold text-2xl">Sergio Enrique Rivera Vidal</h1>
+    <h2 class="text-xl">Front end developer</h2>
+  </div>
+  <div class="flex justify-around">
+    <Image
+      src={Foto}
+      alt="Sergio"
+      loading="eager"
+      fetchpriority="high"
+      class="w-56 h-56"
+    />
+    <div
+      class="flex flex-col border-r-3 border-emerald-500 pr-3 justify-evenly"
+    >
+      <a href="#">
+        <Icon name="fa6-brands:github" class="w-8 h-8 text-emerald-500" />
+      </a>
+      <a href="#">
+        <Icon name="fa6-brands:linkedin" class="w-8 h-8 text-emerald-500" />
+      </a>
+    </div>
+  </div>
+  <div>
+    <h3>sergioenrique.riverav@gmail.com</h3>
+    <p>Puebla, Puebla</p>
+  </div>
+  <div class="flex justify-center">
+    <a
+      href="mailto:sergioenrique.riverav@gmail.com"
+      class="bg-emerald-500 text-neutral-900 py-3 px-6 rounded-xl font-semibold group hover:bg-emerald-700 transition-colors"
+    >
+      <div class="flex items-center space-x-1">
+        <Icon
+          name="lucide:mail"
+          class="w-6 h-6 text-slate-900 group-hover:text-white"
+        />
+        <p class="group-hover:text-white">Contáctame</p>
+      </div>
+    </a>
+  </div>
+</aside>
