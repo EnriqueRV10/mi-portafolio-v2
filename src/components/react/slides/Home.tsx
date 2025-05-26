@@ -3,7 +3,10 @@ import SlideBase from "../SlideBase";
 
 function Home() {
   return (
-    <SlideBase title="¡Hola! Soy" subtitle="Desarrollador Frontend">
+    <SlideBase
+      title="¡Hola! Soy Sergio Enrique"
+      subtitle="Desarrollador Frontend"
+    >
       <div className="space-y-8">
         <div className="text-6xl font-bold">
           <span className="text-white">Sergio</span>

@@ -42,9 +42,9 @@ export default function SlidesContainer() {
   }, []);
 
   return (
-    <div className="fixed inset-0 sm:left-0 sm:w-1/2 md:left-1/4 md:w-3/4 lg:left-1/4 lg:w-3/4 h-screen bg-stone-900 border-1 border-white">
+    <div className="flex-1 bg-stone-900 rounded-3xl overflow-hidden">
       {/* Área principal de contenido */}
-      <div className="h-full w-full relative overflow-hidden p-8">
+      <div className="h-full w-full relative overflow-hidden">
         {/* Indicador de slide actual */}
         <div className="absolute top-8 right-8 z-20">
           <span className="text-emerald-500 font-mono text-sm">
