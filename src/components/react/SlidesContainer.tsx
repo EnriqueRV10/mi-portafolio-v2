@@ -82,7 +82,7 @@ export default function SlidesContainer() {
 
         {/* Navbar inferior */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="bg-neutral-800/90 backdrop-blur-sm border border-neutral-700 rounded-full px-6 py-3">
+          <div className="bg-neutral-800/90 backdrop-blur-sm border-2 border-neutral-700 rounded-full px-6 py-3">
             <div className="flex items-center gap-4">
               {slides.map((slide, index) => {
                 const getIcon = (slideId: string) => {

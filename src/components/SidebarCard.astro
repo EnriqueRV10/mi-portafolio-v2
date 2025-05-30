@@ -7,7 +7,8 @@ import { Icon } from "astro-icon/components";
 <aside
   class="border border-neutral-400 rounded-3xl text-white p-8 space-y-10
          w-full sm:w-96 md:w-80 lg:w-96 flex-shrink-0
-         hidden sm:flex sm:flex-col sm:justify-around"
+         hidden sm:flex sm:flex-col sm:justify-around
+         my-auto max-h-[90vh]"
 >
   <div class="flex flex-col items-end w-full text-end">
     <h1 class="font-bold text-2xl">Sergio Enrique Rivera Vidal</h1>
@@ -24,12 +25,12 @@ import { Icon } from "astro-icon/components";
       />
       <div
         class="absolute bottom-0 left-0 w-full h-16 pointer-events-none"
-        style="background: linear-gradient(to top, #18181b 20%, transparent); border-bottom-left-radius: 1.5rem; border-bottom-right-radius: 1.5rem;"
+        style="background: linear-gradient(to top, #1c1917 20%, transparent); border-bottom-left-radius: 1.5rem; border-bottom-right-radius: 1.5rem;"
       >
       </div>
     </div>
     <div
-      class="flex flex-col border-r-3 border-emerald-500 pr-3 justify-evenly h-1/2"
+      class="flex flex-col border-r-3 border-emerald-500 pr-3 justify-evenly h-32"
     >
       <a href="#">
         <Icon name="fa6-brands:github" class="w-8 h-8 text-emerald-500" />
@@ -39,21 +40,18 @@ import { Icon } from "astro-icon/components";
       </a>
     </div>
   </div>
-  <div>
+  <div class="text-neutral-400 text-left text-lg font-light space-y-2">
     <h3>sergioenrique.riverav@gmail.com</h3>
-    <p>Puebla, Puebla</p>
+    <p class="indent-2">Puebla, Puebla</p>
   </div>
   <div class="flex justify-center">
     <a
       href="mailto:sergioenrique.riverav@gmail.com"
-      class="bg-emerald-500 text-neutral-900 py-3 px-6 rounded-xl font-semibold group hover:bg-emerald-700 transition-colors"
+      class="bg-emerald-500 text-neutral-900 py-3 px-6 rounded-xl font-semibold group hover:bg-emerald-600 transition-colors"
     >
       <div class="flex items-center space-x-1">
-        <Icon
-          name="lucide:mail"
-          class="w-6 h-6 text-slate-900 group-hover:text-white"
-        />
-        <p class="group-hover:text-white">Contáctame</p>
+        <Icon name="lucide:mail" class="w-6 h-6 text-slate-900" />
+        <p>Contáctame</p>
       </div>
     </a>
   </div>
