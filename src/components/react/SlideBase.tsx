@@ -15,11 +15,11 @@ export default function SlideBase({
 }: SlideBaseProps) {
   return (
     <div
-      className={`h-full w-full flex flex-col justify-center px-8 py-12 ${className}`}
+      className={`h-[90vh] w-full flex flex-col justify-center px-8 pb-16 pt-6 ${className}`}
     >
       {/* Header del slide */}
       {(title || subtitle) && (
-        <div className="mb-12">
+        <div className="mb-6">
           {title && (
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
               {title}
@@ -32,7 +32,7 @@ export default function SlideBase({
       )}
 
       {/* Contenido principal */}
-      <div className="flex-1 flex flex-col justify-center">{children}</div>
+      <div className="flex-1 flex flex-col justify-center-safe">{children}</div>
     </div>
   );
 }

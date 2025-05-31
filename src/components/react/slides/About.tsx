@@ -3,32 +3,37 @@ import SlideBase from "../SlideBase";
 
 function About() {
   return (
-    <SlideBase
-      title="Sobre Mí"
-      subtitle="Conoce mi historia y pasión por el desarrollo"
-    >
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
+    <SlideBase title="Sobre Mí" subtitle="">
+      <div className="grid md:grid-cols-3 gap-12 items-center">
+        <div className="space-y-6 col-span-2">
           <p className="text-lg text-neutral-300 leading-relaxed">
             Soy un desarrollador frontend apasionado por crear experiencias
-            digitales que marquen la diferencia. Me especializo en transformar
-            ideas complejas en interfaces simples y elegantes.
+            digitales que marquen la diferencia. Mi enfoque combina código
+            limpio, diseño moderno y performance óptima para crear productos
+            digitales que los usarios amen.
           </p>
 
           <p className="text-lg text-neutral-300 leading-relaxed">
-            Con experiencia en tecnologías modernas como React, TypeScript y
-            frameworks CSS, me enfoco en escribir código limpio y mantenible.
+            Con experiencia en tecnologías modernas como React, React Native,
+            Astro, me enfoco en escribir código limpio y mantenible. Siempre
+            busco aprender para mejorar en mi área y estar al tanto de las
+            últimas tendencias.
+          </p>
+
+          <p className="text-lg text-neutral-300 leading-relaxed">
+            ¿Buscas un desarrollador frontend comprometido con entregar
+            resultados de calidad? ¡No busques mas!
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
-            <div className="text-center p-4 bg-neutral-800 rounded-lg">
-              <div className="text-2xl font-bold text-emerald-500">3+</div>
+            <div className="text-center p-4 bg-neutral-800 rounded-lg w-3/4 justify-self-end">
+              <div className="text-2xl font-bold text-emerald-500">1+</div>
               <div className="text-sm text-neutral-400">
                 Años de experiencia
               </div>
             </div>
-            <div className="text-center p-4 bg-neutral-800 rounded-lg">
-              <div className="text-2xl font-bold text-emerald-500">50+</div>
+            <div className="text-center p-4 bg-neutral-800 rounded-lg w-3/4 justify-self-start">
+              <div className="text-2xl font-bold text-emerald-500">2+</div>
               <div className="text-sm text-neutral-400">
                 Proyectos completados
               </div>

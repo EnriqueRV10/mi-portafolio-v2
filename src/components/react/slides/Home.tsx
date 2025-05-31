@@ -1,7 +1,11 @@
 import React from "react";
 import SlideBase from "../SlideBase";
 
-function Home() {
+interface HomeProps {
+  navigateToSlide: (slideId: string) => void;
+}
+
+function Home({ navigateToSlide }: HomeProps) {
   return (
     <SlideBase title="" subtitle="">
       <div className="space-y-8">
@@ -14,12 +18,15 @@ function Home() {
         </div>
 
         <p className="text-xl text-neutral-300 max-w-2xl leading-relaxed">
-          Creo experiencias web hermosas y funcionales. Especializado en React,
-          JavaScript y tecnologías modernas.
+          Transformando ideas en experiencias digitales con código limpio y
+          creatividad.
         </p>
 
         <div className="flex gap-4 pt-8">
-          <button className="bg-emerald-500 hover:bg-emerald-600 text-black px-8 py-3 rounded-lg font-semibold transition-colors">
+          <button
+            onClick={() => navigateToSlide("proyects")}
+            className="bg-emerald-500 hover:bg-emerald-600 text-black px-8 py-3 rounded-lg font-semibold transition-colors"
+          >
             Ver Proyectos
           </button>
           <button className="border border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-black px-8 py-3 rounded-lg font-semibold transition-colors">

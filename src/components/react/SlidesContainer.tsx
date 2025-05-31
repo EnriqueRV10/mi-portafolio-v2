@@ -10,13 +10,13 @@ import Skills from "./slides/Skills";
 import Contact from "./slides/Contact";
 
 const slides = [
-  { id: "home", title: "Inicio", component: <Home /> },
-  { id: "about", title: "Acerca", component: <About /> },
-  { id: "proyects", title: "Proyectos", component: <Proyects /> },
-  { id: "resume", title: "CV", component: <Resume /> },
-  { id: "services", title: "Servicios", component: <Services /> },
-  { id: "skills", title: "Habilidades", component: <Skills /> },
-  { id: "contact", title: "Contacto", component: <Contact /> },
+  { id: "home", title: "Inicio", component: null },
+  { id: "about", title: "Sobre Mí", component: null },
+  { id: "proyects", title: "Proyectos", component: null },
+  { id: "resume", title: "CV", component: null },
+  { id: "services", title: "Servicios", component: null },
+  { id: "skills", title: "Habilidades", component: null },
+  { id: "contact", title: "Contacto", component: null },
 ];
 
 export default function SlidesContainer() {
@@ -48,6 +48,36 @@ export default function SlidesContainer() {
     changeSlide(newIndex);
   };
 
+  // Función para navegar a un slide específico por ID
+  const navigateToSlide = (slideId: string) => {
+    const slideIndex = slides.findIndex((slide) => slide.id === slideId);
+    if (slideIndex !== -1) {
+      changeSlide(slideIndex);
+    }
+  };
+
+  // Renderizar el componente actual con las props necesarias
+  const renderCurrentSlide = () => {
+    switch (slides[current].id) {
+      case "home":
+        return <Home navigateToSlide={navigateToSlide} />;
+      case "about":
+        return <About />;
+      case "proyects":
+        return <Proyects />;
+      case "resume":
+        return <Resume />;
+      case "services":
+        return <Services />;
+      case "skills":
+        return <Skills />;
+      case "contact":
+        return <Contact />;
+      default:
+        return <Home navigateToSlide={navigateToSlide} />;
+    }
+  };
+
   // Manejar navegación por teclado
   React.useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -77,7 +107,7 @@ export default function SlidesContainer() {
             isTransitioning ? "opacity-0" : "opacity-100"
           }`}
         >
-          {slides[current].component}
+          {renderCurrentSlide()}
         </div>
 
         {/* Navbar - lateral minimalista en móviles, inferior en desktop */}
