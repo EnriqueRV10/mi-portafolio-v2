@@ -64,8 +64,8 @@ export default function SlidesContainer() {
       {/* Área principal de contenido */}
       <div className="h-full w-full relative overflow-hidden">
         {/* Indicador de slide actual */}
-        <div className="absolute top-8 right-8 z-20">
-          <span className="text-emerald-500 font-mono text-sm">
+        <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20">
+          <span className="text-emerald-500 font-mono text-xs sm:text-sm">
             {String(current + 1).padStart(2, "0")} /{" "}
             {String(slides.length).padStart(2, "0")}
           </span>
@@ -80,17 +80,17 @@ export default function SlidesContainer() {
           {slides[current].component}
         </div>
 
-        {/* Navbar inferior */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="bg-neutral-800/90 backdrop-blur-sm border-2 border-neutral-700 rounded-full px-6 py-3">
-            <div className="flex items-center gap-4">
+        {/* Navbar - lateral minimalista en móviles, inferior en desktop */}
+        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 sm:bottom-8 sm:left-1/2 sm:right-auto sm:top-auto sm:transform sm:-translate-x-1/2 sm:translate-y-0 z-10">
+          <div className="bg-neutral-800/5 backdrop-blur-xs border border-neutral-600/50 rounded-full px-1 py-2 sm:px-6 sm:py-3 sm:border-2 sm:border-neutral-700">
+            <div className="flex flex-col items-center gap-1 sm:flex-row sm:gap-4">
               {slides.map((slide, index) => {
                 const getIcon = (slideId: string) => {
                   switch (slideId) {
                     case "home":
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -106,7 +106,7 @@ export default function SlidesContainer() {
                     case "about":
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -122,7 +122,7 @@ export default function SlidesContainer() {
                     case "proyects":
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -138,7 +138,7 @@ export default function SlidesContainer() {
                     case "resume":
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -154,7 +154,7 @@ export default function SlidesContainer() {
                     case "services":
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -176,7 +176,7 @@ export default function SlidesContainer() {
                     case "skills":
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -192,7 +192,7 @@ export default function SlidesContainer() {
                     case "contact":
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -208,7 +208,7 @@ export default function SlidesContainer() {
                     default:
                       return (
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -229,10 +229,10 @@ export default function SlidesContainer() {
                     key={slide.id}
                     onClick={() => changeSlide(index)}
                     disabled={isTransitioning}
-                    className={`group relative p-3 rounded-full transition-all duration-300 ${
+                    className={`group relative p-1.5 rounded-full transition-all duration-300 sm:p-3 ${
                       isTransitioning
                         ? "cursor-not-allowed opacity-50"
-                        : "cursor-pointer hover:bg-neutral-700"
+                        : "cursor-pointer hover:bg-neutral-700/50 sm:hover:bg-neutral-700"
                     } ${
                       index === current
                         ? "bg-emerald-500 text-neutral-900"
@@ -242,9 +242,9 @@ export default function SlidesContainer() {
                   >
                     {getIcon(slide.id)}
 
-                    {/* Tooltip */}
+                    {/* Tooltip - oculto en móviles */}
                     <span
-                      className="absolute -top-12 left-1/2 transform -translate-x-1/2 
+                      className="hidden sm:block absolute -top-12 left-1/2 transform -translate-x-1/2 
                                  bg-neutral-900 text-white text-xs py-2 px-3 rounded-lg
                                  opacity-0 group-hover:opacity-100 transition-opacity 
                                  whitespace-nowrap pointer-events-none border border-neutral-700
@@ -261,8 +261,8 @@ export default function SlidesContainer() {
           </div>
         </div>
 
-        {/* Indicador de navegación por teclado */}
-        <div className="absolute bottom-20 right-8 text-neutral-500 text-xs">
+        {/* Indicador de navegación por teclado - oculto en móviles */}
+        <div className="hidden sm:block absolute bottom-20 right-8 text-neutral-500 text-xs">
           Use ← → para navegar
         </div>
       </div>
