@@ -77,7 +77,7 @@ function Resume() {
     if (type === "experience") {
       return (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 lg:w-5 lg:h-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ function Resume() {
     }
     return (
       <svg
-        className="w-5 h-5"
+        className="w-4 h-4 lg:w-5 lg:h-5"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -118,76 +118,77 @@ function Resume() {
     <SlideBase
       title="Experiencia"
       subtitle="Mi trayectoria profesional y educativa"
+      className="lg:justify-start" // Forzar alignment al top en desktop
     >
-      <div className="mx-auto">
-        {/* Tabs para filtrar */}
-        <div className="flex justify-center mb-8">
+      <div className="w-full max-w-4xl mx-auto space-y-8">
+        {/* Tabs para filtrar - más compactos */}
+        <div className="flex justify-center">
           <div className="flex bg-neutral-800 rounded-lg p-1">
-            <button className="px-4 py-2 text-sm font-medium text-white bg-emerald-500 rounded-md transition-colors">
+            <button className="px-3 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm font-medium text-white bg-emerald-500 rounded-md transition-colors">
               Todo
             </button>
-            <button className="px-4 py-2 text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+            <button className="px-3 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
               Experiencia
             </button>
-            <button className="px-4 py-2 text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+            <button className="px-3 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm font-medium text-neutral-400 hover:text-white transition-colors">
               Educación
             </button>
           </div>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline - más compacto */}
         <div className="relative">
           {/* Línea vertical del timeline - oculta en móviles */}
-          <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-400 to-transparent"></div>
+          <div className="hidden md:block absolute left-6 lg:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-400 to-transparent"></div>
 
           {/* Items del timeline */}
-          <div className="space-y-8">
+          <div className="space-y-4 lg:space-y-6">
             {timelineData.map((item, index) => (
               <div key={item.id} className="relative flex items-start group">
                 {/* Icono del timeline - oculto en móviles */}
-                <div className="hidden md:flex absolute left-6 w-5 h-5 bg-emerald-500 rounded-full items-center justify-center text-neutral-900 z-10 group-hover:scale-110 transition-transform">
+                <div className="hidden md:flex absolute left-4 lg:left-6 w-4 h-4 lg:w-5 lg:h-5 bg-emerald-500 rounded-full items-center justify-center text-neutral-900 z-10 group-hover:scale-110 transition-transform">
                   {getIcon(item.type)}
                 </div>
 
                 {/* Contenido */}
-                <div className="w-full md:ml-16 bg-neutral-800 rounded-lg p-6 hover:bg-neutral-750 transition-colors border border-neutral-700 hover:border-emerald-500/30">
+                <div className="w-full md:ml-12 lg:ml-16 bg-neutral-800 rounded-lg p-4 lg:p-6 hover:bg-neutral-750 transition-colors border border-neutral-700 hover:border-emerald-500/30">
                   {/* Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 lg:mb-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         {/* Icono móvil */}
-                        <div className="md:hidden flex w-5 h-5 bg-emerald-500 rounded-full items-center justify-center text-neutral-900">
+                        <div className="md:hidden flex w-4 h-4 bg-emerald-500 rounded-full items-center justify-center text-neutral-900">
                           {getIcon(item.type)}
                         </div>
-                        <h3 className="text-lg font-semibold text-white">
+                        <h3 className="text-base lg:text-lg font-semibold text-white">
                           {item.title}
                         </h3>
                         {item.isActive && (
-                          <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded-full">
+                          <span className="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs rounded-full">
                             Actual
                           </span>
                         )}
                       </div>
-                      <p className="text-emerald-400 font-medium">
+                      <p className="text-emerald-400 font-medium text-sm lg:text-base">
                         {item.company}
                       </p>
-                      <p className="text-neutral-400 text-sm">
+                      <p className="text-neutral-400 text-xs lg:text-sm">
                         {item.location}
                       </p>
                     </div>
-                    <div className="mt-2 sm:mt-0">
-                      <span className="inline-block px-3 py-1 bg-neutral-700 text-neutral-300 text-sm rounded-full">
+                    <div className="mt-2 sm:mt-0 flex-shrink-0">
+                      <span className="inline-block px-2 lg:px-3 py-1 bg-neutral-700 text-neutral-300 text-xs lg:text-sm rounded-full">
                         {item.period}
                       </span>
                     </div>
                   </div>
 
                   {/* Descripción */}
-                  <div className="space-y-2 mb-4">
+                  <div className="space-y-1.5 lg:space-y-2 mb-3 lg:mb-4">
                     {item.description.map((desc, descIndex) => (
                       <div key={descIndex} className="flex items-start gap-2">
-                        <span className="w-1 h-1 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
-                        <p className="text-neutral-300 text-sm leading-relaxed">
+                        <span className="w-1 h-1 bg-emerald-500 rounded-full mt-1.5 lg:mt-2 flex-shrink-0"></span>
+                        <p className="text-neutral-300 text-xs lg:text-sm leading-relaxed">
                           {desc}
                         </p>
                       </div>
@@ -196,11 +197,11 @@ function Resume() {
 
                   {/* Tecnologías */}
                   {item.technologies && (
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 lg:gap-2">
                       {item.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded border border-emerald-500/20"
+                          className="px-2 py-0.5 lg:py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded border border-emerald-500/20"
                         >
                           {tech}
                         </span>
@@ -213,27 +214,39 @@ function Resume() {
           </div>
         </div>
 
-        {/* Estadísticas */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-neutral-700">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-500">1+</div>
-            <div className="text-sm text-neutral-400">Años de experiencia</div>
+        {/* Estadísticas - más compactas */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 pt-6 pb-6 lg:pt-8 border-t border-neutral-700">
+          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
+            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
+              1+
+            </div>
+            <div className="text-xs lg:text-sm text-neutral-400">
+              Años de experiencia
+            </div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-500">5+</div>
-            <div className="text-sm text-neutral-400">
+          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
+            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
+              5+
+            </div>
+            <div className="text-xs lg:text-sm text-neutral-400">
               Proyectos completados
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-500">10+</div>
-            <div className="text-sm text-neutral-400">
+          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
+            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
+              10+
+            </div>
+            <div className="text-xs lg:text-sm text-neutral-400">
               Tecnologías dominadas
             </div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-emerald-500">2+</div>
-            <div className="text-sm text-neutral-400">Certificaciones</div>
+          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
+            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
+              2+
+            </div>
+            <div className="text-xs lg:text-sm text-neutral-400">
+              Certificaciones
+            </div>
           </div>
         </div>
       </div>

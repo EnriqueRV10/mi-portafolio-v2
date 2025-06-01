@@ -36,6 +36,14 @@ export default function SlideBase({
       {/* Contenido principal */}
       <div className="flex-1 flex flex-col justify-start lg:justify-center-safe">
         {children}
+        <div
+          className="absolute bottom-0 left-0 w-full h-16 pointer-events-none"
+          style={{
+            background: "linear-gradient(to top, #1c1917 20%, transparent)",
+            borderBottomLeftRadius: "1.5rem",
+            borderBottomRightRadius: "1.5rem",
+          }}
+        ></div>
       </div>
     </div>
   );

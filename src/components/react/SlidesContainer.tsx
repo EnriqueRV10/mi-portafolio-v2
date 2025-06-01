@@ -90,7 +90,7 @@ export default function SlidesContainer() {
   }, [current, isTransitioning]);
 
   return (
-    <div className="flex-1 bg-stone-900 rounded-3xl overflow-hidden">
+    <div className="flex-1 bg-stone-900 rounded-3xl ">
       {/* Área principal de contenido */}
       <div className="h-full w-full relative">
         {/* Indicador de slide actual */}
