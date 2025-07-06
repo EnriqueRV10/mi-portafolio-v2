@@ -16,6 +16,24 @@ interface FormErrors {
   mensaje?: string;
 }
 
+// Componente para iconos sociales (agregar según tus necesidades)
+const socialLinks = [
+  {
+    name: "GitHub",
+    href: "https://github.com/tu-usuario",
+    icon: (
+      <svg
+        className="w-6 h-6 text-neutral-400 hover:text-white transition-colors"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+      </svg>
+    ),
+  },
+  // Agregar más enlaces sociales según necesites
+];
+
 function Contact() {
   const [formData, setFormData] = useState<FormData>({
     nombre: "",
@@ -96,12 +114,12 @@ function Contact() {
     setSubmitStatus("idle");
 
     try {
-      // Envío a Netlify Forms
+      // Envío a Netlify Forms con la estructura correcta
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
-          "form-name": "contact",
+          "form-name": "contact", // CRÍTICO: Debe coincidir con el name del formulario HTML
           ...formData,
         }),
       });
@@ -115,60 +133,33 @@ function Contact() {
           asunto: "",
           mensaje: "",
         });
-        setErrors({});
       } else {
         throw new Error("Error en el envío");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error al enviar formulario:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/tu-perfil", // Reemplaza con tu URL real
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
-          viewBox="0 0 256 256"
-        >
-          <path
-            fill="#10b981"
-            d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4c-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.91 39.91 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186zM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009s9.851-22.014 22.008-22.016c12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97zM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/tu-usuario", // Reemplaza con tu URL real
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
-          viewBox="0 0 256 250"
-        >
-          <path
-            fill="#10b981"
-            d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46c6.397 1.185 8.746-2.777 8.746-6.158c0-3.052-.12-13.135-.174-23.83c-35.61 7.742-43.124-15.103-43.124-15.103c-5.823-14.795-14.213-18.73-14.213-18.73c-11.613-7.944.876-7.78.876-7.78c12.853.902 19.621 13.19 19.621 13.19c11.417 19.568 29.945 13.911 37.249 10.64c1.149-8.272 4.466-13.92 8.127-17.116c-28.431-3.236-58.318-14.212-58.318-63.258c0-13.975 5-25.394 13.188-34.358c-1.329-3.224-5.71-16.242 1.24-33.874c0 0 10.749-3.44 35.21 13.121c10.21-2.836 21.16-4.258 32.038-4.307c10.878.049 21.837 1.47 32.066 4.307c24.431-16.56 35.165-13.12 35.165-13.12c6.967 17.63 2.584 30.65 1.255 33.873c8.207 8.964 13.173 20.383 13.173 34.358c0 49.163-29.944 59.988-58.447 63.157c4.591 3.972 8.682 11.762 8.682 23.704c0 17.126-.148 30.91-.148 35.126c0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002C256 57.307 198.691 0 128.001 0"
-          />
-        </svg>
-      ),
-    },
-  ];
-
   return (
     <SlideBase
+      id="contacto"
+      className="min-h-screen flex items-center justify-center"
       title="Contacto"
-      subtitle="¿Tienes una idea interesante? Hablemos."
+      subtitle="¿Tienes un proyecto en mente? Hablemos."
     >
+      {/* Formulario oculto para Netlify - DEBE estar presente en el HTML */}
+      <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="nombre" />
+        <input type="email" name="correo" />
+        <input type="tel" name="telefono" />
+        <input type="text" name="asunto" />
+        <textarea name="mensaje"></textarea>
+      </form>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
         {/* Información de contacto */}
         <div className="lg:col-span-1 space-y-4 lg:space-y-6 order-2 lg:order-1">
@@ -206,8 +197,6 @@ function Contact() {
 
         {/* Formulario */}
         <div className="lg:col-span-2 space-y-4 order-1 lg:order-2 text-neutral-300">
-          {/* Nota: El formulario oculto para Netlify debe estar en tu HTML estático */}
-
           {/* Mensaje de estado */}
           {submitStatus === "success" && (
             <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 mb-6">
@@ -225,10 +214,14 @@ function Contact() {
             </div>
           )}
 
-          {/* Formulario principal controlado por React */}
-          <div className="w-full space-y-6 rounded-lg p-5">
+          {/* Formulario principal */}
+          <form
+            onSubmit={handleSubmit}
+            className="w-full space-y-6 rounded-lg p-5"
+          >
             {/* Campo oculto para protección contra spam */}
             <input type="hidden" name="bot-field" />
+            <input type="hidden" name="form-name" value="contact" />
 
             {/* Nombre y Correo */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -299,7 +292,7 @@ function Contact() {
                   value={formData.telefono}
                   onChange={handleInputChange}
                   placeholder="Tu número de teléfono"
-                  className="w-full px-3 py-2 bg-transparent border-b-2 border-neutral-600 focus:outline-none focus:border-emerald-500 transition-colors"
+                  className="w-full px-3 py-2 bg-transparent border-b-2 border-neutral-600 focus:border-emerald-500 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -342,9 +335,9 @@ function Contact() {
                 name="mensaje"
                 value={formData.mensaje}
                 onChange={handleInputChange}
-                placeholder="Escribe tu mensaje aquí..."
-                rows={4}
-                className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors resize-none ${
+                placeholder="Cuéntame sobre tu proyecto..."
+                rows={5}
+                className={`w-full px-3 py-2 bg-transparent border-2 rounded focus:outline-none transition-colors resize-none ${
                   errors.mensaje
                     ? "border-red-500 focus:border-red-400"
                     : "border-neutral-600 focus:border-emerald-500"
@@ -353,49 +346,21 @@ function Contact() {
               {errors.mensaje && (
                 <p className="text-red-400 text-xs mt-1">{errors.mensaje}</p>
               )}
-              <p className="text-xs text-neutral-500 mt-1">
-                Mínimo 10 caracteres ({formData.mensaje.length}/10)
-              </p>
             </div>
 
             {/* Botón de envío */}
-            <div className="pt-4 w-full max-w-xs mx-auto">
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className={`w-full font-medium py-3 px-6 rounded-lg transition-all duration-200 ${
-                  isSubmitting
-                    ? "bg-neutral-600 text-neutral-400 cursor-not-allowed"
-                    : "bg-emerald-500 text-neutral-900 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20"
-                }`}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                        fill="none"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                    Enviando...
-                  </span>
-                ) : (
-                  "Enviar mensaje"
-                )}
-              </button>
-            </div>
-          </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
+                isSubmitting
+                  ? "bg-neutral-600 text-neutral-400 cursor-not-allowed"
+                  : "bg-emerald-600 hover:bg-emerald-700 text-white hover:shadow-lg hover:shadow-emerald-500/25"
+              }`}
+            >
+              {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+            </button>
+          </form>
         </div>
       </div>
     </SlideBase>

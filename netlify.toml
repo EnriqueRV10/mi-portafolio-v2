@@ -1,0 +1,24 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[functions]
+  directory = "netlify/functions"
+
+# Configuración para Netlify Forms
+[[forms]]
+  name = "contact"
+
+# Configuración de notificaciones (opcional)
+[forms.notifications]
+  # Puedes agregar notificaciones por email aquí
+  # emails = ["tu-email@example.com"]
+
+# Headers de seguridad (opcional pero recomendado)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
