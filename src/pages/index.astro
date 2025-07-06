@@ -6,6 +6,15 @@ import SlidesContainer from "../components/react/SlidesContainer";
 
 <Layout>
   <div class="flex h-screen w-screen p-4 gap-4">
+    <!-- Formulario oculto para que Netlify lo registre -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="nombre" />
+      <input type="email" name="correo" />
+      <input type="tel" name="telefono" />
+      <input type="text" name="asunto" />
+      <textarea name="mensaje"></textarea>
+    </form>
+
     <SideBarCard />
     <SlidesContainer client:load />
   </div>

@@ -151,15 +151,6 @@ function Contact() {
       title="Contacto"
       subtitle="¿Tienes un proyecto en mente? Hablemos."
     >
-      {/* Formulario oculto para Netlify - DEBE estar presente en el HTML */}
-      <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-        <input type="text" name="nombre" />
-        <input type="email" name="correo" />
-        <input type="tel" name="telefono" />
-        <input type="text" name="asunto" />
-        <textarea name="mensaje"></textarea>
-      </form>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
         {/* Información de contacto */}
         <div className="lg:col-span-1 space-y-4 lg:space-y-6 order-2 lg:order-1">
