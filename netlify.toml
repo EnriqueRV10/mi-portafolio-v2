@@ -1,0 +1,16 @@
+# netlify.toml
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[plugins]]
+  package = "@netlify/plugin-functions"
+
+[functions]
+  directory = "netlify/functions"
+
+# Configuración para formularios
+[forms]
+  # Configurar notificaciones por email
+  [forms.contact]
+    notify = ["sergioenrique.riverav@gmail.com"]
