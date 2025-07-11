@@ -14,7 +14,7 @@ const slides = [
   { id: "about", title: "Sobre Mí", component: null },
   { id: "proyects", title: "Proyectos", component: null },
   { id: "resume", title: "CV", component: null },
-  { id: "services", title: "Servicios", component: null },
+  // { id: "services", title: "Servicios", component: null },
   { id: "skills", title: "Habilidades", component: null },
   { id: "contact", title: "Contacto", component: null },
 ];
@@ -101,13 +101,15 @@ export default function SlidesContainer() {
           </span>
         </div>
 
-        {/* Contenido del slide con efecto fade */}
+        {/* Contenido del slide con efecto fade y scroll mejorado */}
         <div
-          className={`h-full w-full transition-opacity duration-300 ease-in-out overflow-y-auto ${
+          className={`h-full w-full transition-opacity duration-300 ease-in-out ${
             isTransitioning ? "opacity-0" : "opacity-100"
           }`}
         >
-          {renderCurrentSlide()}
+          <div className="h-full overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent">
+            {renderCurrentSlide()}
+          </div>
         </div>
 
         {/* Navbar - lateral minimalista en móviles, inferior en desktop */}

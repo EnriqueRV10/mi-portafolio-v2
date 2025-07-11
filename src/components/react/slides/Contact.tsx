@@ -147,7 +147,6 @@ function Contact() {
   return (
     <SlideBase
       id="contacto"
-      className="min-h-screen flex items-center justify-center"
       title="Contacto"
       subtitle="¿Tienes un proyecto en mente? Hablemos."
     >

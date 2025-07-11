@@ -4,25 +4,20 @@ import SlideBase from "../SlideBase";
 function Proyects() {
   const projects = [
     {
-      title: "E-commerce Dashboard",
-      description: "Panel administrativo completo con React y TypeScript",
-      tech: ["React", "TypeScript", "Tailwind"],
+      title: "Bio Collector",
+      description:
+        "Aplicación móvil de captura de datos biológicos y digitalización de proceso de herborización",
+      tech: ["React Native", "JavaScript", "Tailwind"],
       status: "Completado",
-      image: "🛒",
+      image: "🌱",
     },
     {
-      title: "Portfolio Personal",
-      description: "Sitio web responsive con animaciones avanzadas",
-      tech: ["Astro", "React", "CSS"],
-      status: "En desarrollo",
-      image: "💼",
-    },
-    {
-      title: "App de Tareas",
-      description: "Aplicación de productividad con estado global",
-      tech: ["React", "Redux", "Node.js"],
+      title: "Academia Freinet Admin",
+      description:
+        "Aplicación móvil para gestionar usuarios, horarios, pagos y asistencias a cursos de natación",
+      tech: ["React Native", "Expo", "TypeScript", "Supabase"],
       status: "Completado",
-      image: "✅",
+      image: "🏊",
     },
   ];
 

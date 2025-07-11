@@ -3,31 +3,33 @@ import SlideBase from "../SlideBase";
 
 function About() {
   return (
-    <SlideBase title="Sobre Mí" subtitle="">
+    <SlideBase title="Sobre Mí" subtitle="Conoce un poco más sobre mí">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
         {/* Main content - takes full width on mobile, 2 cols on desktop */}
         <div className="space-y-4 lg:space-y-6 lg:col-span-2 order-2 lg:order-1">
           <p className="text-base lg:text-lg text-neutral-300 leading-relaxed">
-            Soy un desarrollador frontend apasionado por crear experiencias
-            digitales que marquen la diferencia. Mi enfoque combina código
-            limpio, diseño moderno y performance óptima para crear productos
-            digitales que los usuarios amen.
+            👋 Hola, soy Enrique, desarrollador de software con formación en
+            ingeniería en computación y una fuerte orientación al desarrollo
+            full-stack. Actualmente enfocado en frontend con tecnologías
+            modernas como React, Next.js, Tailwind CSS, Zustand y TanStack
+            Query, aplico buenas prácticas para construir interfaces limpias,
+            funcionales y escalables.
           </p>
-
           <p className="text-base lg:text-lg text-neutral-300 leading-relaxed">
-            Con experiencia en tecnologías modernas como React, React Native,
-            Astro, me enfoco en escribir código limpio y mantenible. Siempre
-            busco aprender para mejorar en mi área y estar al tanto de las
-            últimas tendencias.
+            Durante mi trayectoria he desarrollado desde CRUDs con control de
+            acceso hasta apps móviles internas con React Native. También tengo
+            experiencia liderando proyectos de emprendimiento digital, buscando
+            soluciones tecnológicas reales para negocios como clínicas dentales
+            y escuelas.
           </p>
-
           <p className="text-base lg:text-lg text-neutral-300 leading-relaxed">
-            ¿Buscas un desarrollador frontend comprometido con entregar
-            resultados de calidad? ¡No busques más!
+            Me apasiona transformar ideas en productos funcionales, y siempre
+            estoy en busca de mejorar tanto el código como la experiencia de
+            usuario.
           </p>
 
           {/* Stats - horizontal on mobile, grid on desktop */}
-          <div className="grid grid-cols-2 gap-3 lg:gap-4 pt-4 lg:pt-6">
+          <div className="grid grid-cols-2 gap-3 lg:gap-4 pt-4 lg:pt-6 lg:mb-12">
             <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
               <div className="text-xl lg:text-2xl font-bold text-emerald-500">
                 1+
