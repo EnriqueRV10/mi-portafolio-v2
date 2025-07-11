@@ -27,26 +27,6 @@ function About() {
             estoy en busca de mejorar tanto el código como la experiencia de
             usuario.
           </p>
-
-          {/* Stats - horizontal on mobile, grid on desktop */}
-          <div className="grid grid-cols-2 gap-3 lg:gap-4 pt-4 lg:pt-6 lg:mb-12">
-            <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
-              <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-                1+
-              </div>
-              <div className="text-xs lg:text-sm text-neutral-400">
-                Años de experiencia
-              </div>
-            </div>
-            <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
-              <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-                2+
-              </div>
-              <div className="text-xs lg:text-sm text-neutral-400">
-                Proyectos completados
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Why choose me section - shows first on mobile, second on desktop */}
@@ -80,6 +60,26 @@ function About() {
               </span>
             </li>
           </ul>
+
+          {/* Stats - horizontal on mobile, grid on desktop */}
+          <div className="grid grid-cols-2 gap-3 lg:gap-4 pt-4 lg:pt-6 lg:mb-12">
+            <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
+              <div className="text-xl lg:text-2xl font-bold text-emerald-500">
+                1+
+              </div>
+              <div className="text-xs lg:text-sm text-neutral-400">
+                Años de experiencia
+              </div>
+            </div>
+            <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
+              <div className="text-xl lg:text-2xl font-bold text-emerald-500">
+                2+
+              </div>
+              <div className="text-xs lg:text-sm text-neutral-400">
+                Proyectos completados
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </SlideBase>
