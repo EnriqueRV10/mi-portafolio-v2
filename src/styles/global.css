@@ -39,3 +39,30 @@ html {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
+
+* Asegurar que el html también tenga fondo oscuro */ html {
+  background-color: #1c1917; /* stone-900 */
+  scroll-behavior: smooth;
+}
+
+/* Asegurar que las áreas de safe area también tengan fondo */
+body {
+  background-color: #1c1917; /* stone-900 */
+  /* Agregar padding para safe areas */
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  /* NO agregamos bottom porque eso afectaría el navbar */
+}
+
+/* Alternativa: usar una capa de fondo fija */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1c1917; /* stone-900 */
+  z-index: -1;
+}

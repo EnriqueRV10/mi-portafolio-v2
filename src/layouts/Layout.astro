@@ -1,25 +1,47 @@
 ---
 import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Sergio Rivera - Frontend Developer",
+  description = "Portfolio de Sergio Rivera, desarrollador frontend especializado en React, Next.js y tecnologías web modernas.",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content={description} />
     <meta
       name="viewport"
-      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Sergio Enrique - Frontend Developer</title>
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- PWA y mobile optimization -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta
-      name="description"
-      content="Portafolio de Sergio Enrique Rivera Vidal - Desarrollador Frontend especializado en React, JavaScript y tecnologías web modernas."
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
     />
+    <meta name="theme-color" content="#10b981" />
+
+    <!-- Viewport fit para safe areas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
+
+    <title>{title}</title>
   </head>
-  <body class="bg-stone-900 overflow-hidden">
-    <main class="h-screen w-screen relative">
-      <slot />
-    </main>
+  <body>
+    <slot />
   </body>
 </html>

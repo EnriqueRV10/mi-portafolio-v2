@@ -8,6 +8,7 @@ import Resume from "./slides/Resume";
 import Services from "./slides/Services";
 import Skills from "./slides/Skills";
 import Contact from "./slides/Contact";
+import SafeBottomNavbar from "./SafeBottomNavbar";
 
 const slides = [
   { id: "home", title: "Inicio", component: null },
@@ -90,7 +91,7 @@ export default function SlidesContainer() {
   }, [current, isTransitioning]);
 
   return (
-    <div className="flex-1 bg-stone-900 rounded-3xl ">
+    <div className="flex-1 bg-stone-900 rounded-3xl slides-mobile-vh">
       {/* Área principal de contenido */}
       <div className="h-full w-full relative">
         {/* Indicador de slide actual */}
@@ -113,9 +114,9 @@ export default function SlidesContainer() {
         </div>
 
         {/* Navbar - inferior tanto en móviles como en desktop */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="bg-neutral-800/5 backdrop-blur-xs border-2 border-neutral-700 rounded-full px-6 py-3">
-            <div className="flex flex-row items-center gap-4">
+        <SafeBottomNavbar>
+          <div className="bg-neutral-800/95 backdrop-blur-md border-2 border-neutral-700 rounded-full px-4 sm:px-6 py-3 shadow-lg">
+            <div className="flex flex-row items-center gap-2 sm:gap-4">
               {slides.map((slide, index) => {
                 const getIcon = (slideId: string) => {
                   switch (slideId) {
@@ -259,31 +260,23 @@ export default function SlidesContainer() {
                 return (
                   <button
                     key={slide.id}
-                    onClick={() => changeSlide(index)}
+                    onClick={() => navigateToSlide(slide.id)}
                     disabled={isTransitioning}
-                    className={`group relative p-1.5 rounded-full transition-all duration-300 sm:p-3 ${
+                    className={`relative group p-2 sm:p-3 rounded-full transition-all duration-200 ${
                       isTransitioning
                         ? "cursor-not-allowed opacity-50"
                         : "cursor-pointer hover:bg-neutral-700/50 sm:hover:bg-neutral-700"
                     } ${
                       index === current
-                        ? "bg-emerald-500 text-neutral-900"
+                        ? "bg-emerald-500 text-neutral-900 shadow-lg"
                         : "text-neutral-400 hover:text-emerald-400"
                     }`}
                     aria-label={`Ir a ${slide.title}`}
                   >
                     {getIcon(slide.id)}
 
-                    {/* Tooltip - oculto en móviles */}
-                    <span
-                      className="hidden sm:block absolute -top-12 left-1/2 transform -translate-x-1/2 
-                                 bg-neutral-900 text-white text-xs py-2 px-3 rounded-lg
-                                 opacity-0 group-hover:opacity-100 transition-opacity 
-                                 whitespace-nowrap pointer-events-none border border-neutral-700
-                                 before:content-[''] before:absolute before:top-full before:left-1/2 
-                                 before:transform before:-translate-x-1/2 before:border-4 
-                                 before:border-transparent before:border-t-neutral-900"
-                    >
+                    {/* Tooltip - mantener original */}
+                    <span className="hidden sm:block absolute -top-12 left-1/2 transform -translate-x-1/2 bg-neutral-900 text-white text-xs py-2 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-neutral-700 before:content-[''] before:absolute before:top-full before:left-1/2 before:transform before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-neutral-900">
                       {slide.title}
                     </span>
                   </button>
@@ -291,7 +284,7 @@ export default function SlidesContainer() {
               })}
             </div>
           </div>
-        </div>
+        </SafeBottomNavbar>
 
         {/* Indicador de navegación por teclado - oculto en móviles */}
         <div className="hidden sm:block absolute bottom-20 right-8 text-neutral-500 text-xs">
