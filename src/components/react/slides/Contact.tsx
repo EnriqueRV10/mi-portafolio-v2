@@ -16,7 +16,7 @@ interface FormErrors {
   mensaje?: string;
 }
 
-// Componente para iconos sociales (agregar según tus necesidades)
+// Componente para iconos sociales
 const socialLinks = [
   {
     name: "GitHub",
@@ -150,207 +150,351 @@ function Contact() {
       title="Contacto"
       subtitle="¿Tienes un proyecto en mente? Hablemos."
     >
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
-        {/* Información de contacto */}
-        <div className="lg:col-span-1 space-y-4 lg:space-y-6 order-2 lg:order-1">
-          <p className="text-base lg:text-lg text-neutral-400 leading-relaxed font-semibold text-center">
-            Me puedes encontrar en las siguientes plataformas:
-          </p>
+      {/* Contenedor condicional para responsive layout */}
+      <div className="w-full">
+        {/* Layout móvil: Grid con información de contacto */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start md:hidden">
+          {/* Información de contacto - VISIBLE solo en móviles */}
+          <div className="lg:col-span-1 space-y-4 lg:space-y-6 order-2 lg:order-1">
+            {/* Texto de plataformas */}
+            <p className="text-base lg:text-lg text-neutral-400 leading-relaxed font-semibold text-center">
+              Me puedes encontrar en las siguientes plataformas:
+            </p>
 
-          <div className="flex justify-center gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.name}
-                className="transform hover:scale-110 transition-transform duration-200"
-              >
-                {link.icon}
-              </a>
-            ))}
+            <div className="flex justify-center gap-4">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.name}
+                  className="transform hover:scale-110 transition-transform duration-200"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+
+            {/* Card de información adicional */}
+            <div className="mt-8 p-4 bg-neutral-800 rounded-lg border border-neutral-700">
+              <h4 className="text-white font-semibold mb-3">
+                Información de contacto
+              </h4>
+              <div className="space-y-2 text-sm text-neutral-400">
+                <p>📧 sergioenrique.riverav@gmail.com</p>
+                <p>📍 Puebla, Puebla, México</p>
+                <p>⏰ Tiempo de respuesta: 24-48 horas</p>
+              </div>
+            </div>
           </div>
 
-          {/* Información adicional */}
-          <div className="mt-8 p-4 bg-neutral-800 rounded-lg border border-neutral-700">
-            <h4 className="text-white font-semibold mb-3">
-              Información de contacto
-            </h4>
-            <div className="space-y-2 text-sm text-neutral-400">
-              <p>📧 sergioenrique.riverav@gmail.com</p>
-              <p>📍 Puebla, Puebla, México</p>
-              <p>⏰ Tiempo de respuesta: 24-48 horas</p>
-            </div>
+          {/* Formulario en móviles */}
+          <div className="lg:col-span-2 space-y-4 order-1 lg:order-2 text-neutral-300">
+            {/* Formulario */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Nombre y Correo */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="nombre"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Nombre completo *
+                  </label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleInputChange}
+                    placeholder="Tu nombre"
+                    className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
+                      errors.nombre
+                        ? "border-red-500 focus:border-red-400"
+                        : "border-neutral-600 focus:border-emerald-500"
+                    }`}
+                  />
+                  {errors.nombre && (
+                    <p className="text-red-400 text-xs mt-1">{errors.nombre}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="correo"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Correo electrónico *
+                  </label>
+                  <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    value={formData.correo}
+                    onChange={handleInputChange}
+                    placeholder="tu@correo.com"
+                    className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
+                      errors.correo
+                        ? "border-red-500 focus:border-red-400"
+                        : "border-neutral-600 focus:border-emerald-500"
+                    }`}
+                  />
+                  {errors.correo && (
+                    <p className="text-red-400 text-xs mt-1">{errors.correo}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Teléfono y Asunto */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="telefono"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Teléfono (opcional)
+                  </label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleInputChange}
+                    placeholder="Tu número de teléfono"
+                    className="w-full px-3 py-2 bg-transparent border-b-2 border-neutral-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="asunto"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Asunto *
+                  </label>
+                  <input
+                    type="text"
+                    id="asunto"
+                    name="asunto"
+                    value={formData.asunto}
+                    onChange={handleInputChange}
+                    placeholder="Asunto del mensaje"
+                    className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
+                      errors.asunto
+                        ? "border-red-500 focus:border-red-400"
+                        : "border-neutral-600 focus:border-emerald-500"
+                    }`}
+                  />
+                  {errors.asunto && (
+                    <p className="text-red-400 text-xs mt-1">{errors.asunto}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Mensaje */}
+              <div>
+                <label
+                  htmlFor="mensaje"
+                  className="block text-sm font-medium text-neutral-300 mb-1"
+                >
+                  Mensaje *
+                </label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  value={formData.mensaje}
+                  onChange={handleInputChange}
+                  placeholder="Cuéntame sobre tu proyecto..."
+                  rows={5}
+                  className={`w-full px-3 py-2 bg-transparent border-2 rounded focus:outline-none transition-colors resize-none ${
+                    errors.mensaje
+                      ? "border-red-500 focus:border-red-400"
+                      : "border-neutral-600 focus:border-emerald-500"
+                  }`}
+                />
+                {errors.mensaje && (
+                  <p className="text-red-400 text-xs mt-1">{errors.mensaje}</p>
+                )}
+              </div>
+
+              {/* Botón de envío */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
+                  isSubmitting
+                    ? "bg-neutral-600 text-neutral-400 cursor-not-allowed"
+                    : "bg-emerald-600 hover:bg-emerald-700 text-white hover:shadow-lg hover:shadow-emerald-500/25"
+                }`}
+              >
+                {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+              </button>
+            </form>
           </div>
         </div>
 
-        {/* Formulario */}
-        <div className="lg:col-span-2 space-y-4 order-1 lg:order-2 text-neutral-300">
-          {/* Mensaje de estado */}
-          {submitStatus === "success" && (
-            <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 mb-6">
-              <p className="text-green-400 font-medium">
-                ¡Mensaje enviado exitosamente! Te responderé pronto.
-              </p>
-            </div>
-          )}
+        {/* Layout desktop: Formulario centrado sin información de contacto */}
+        <div className="hidden md:flex md:justify-center">
+          <div className="w-full max-w-2xl space-y-4 text-neutral-300">
+            {/* Mensaje de estado */}
+            {submitStatus === "success" && (
+              <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 mb-6">
+                <p className="text-green-400 font-medium">
+                  ¡Mensaje enviado exitosamente! Te responderé pronto.
+                </p>
+              </div>
+            )}
 
-          {submitStatus === "error" && (
-            <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
-              <p className="text-red-400 font-medium">
-                Error al enviar el mensaje. Por favor, intenta de nuevo.
-              </p>
-            </div>
-          )}
+            {submitStatus === "error" && (
+              <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
+                <p className="text-red-400 font-medium">
+                  Error al enviar el mensaje. Por favor, intenta de nuevo.
+                </p>
+              </div>
+            )}
 
-          {/* Formulario principal */}
-          <form
-            onSubmit={handleSubmit}
-            className="w-full space-y-6 rounded-lg p-5"
-          >
-            {/* Campo oculto para protección contra spam */}
-            <input type="hidden" name="bot-field" />
-            <input type="hidden" name="form-name" value="contact" />
+            {/* Formulario */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Nombre y Correo */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="nombre-desktop"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Nombre completo *
+                  </label>
+                  <input
+                    type="text"
+                    id="nombre-desktop"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleInputChange}
+                    placeholder="Tu nombre"
+                    className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
+                      errors.nombre
+                        ? "border-red-500 focus:border-red-400"
+                        : "border-neutral-600 focus:border-emerald-500"
+                    }`}
+                  />
+                  {errors.nombre && (
+                    <p className="text-red-400 text-xs mt-1">{errors.nombre}</p>
+                  )}
+                </div>
 
-            {/* Nombre y Correo */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="correo-desktop"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Correo electrónico *
+                  </label>
+                  <input
+                    type="email"
+                    id="correo-desktop"
+                    name="correo"
+                    value={formData.correo}
+                    onChange={handleInputChange}
+                    placeholder="tu@correo.com"
+                    className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
+                      errors.correo
+                        ? "border-red-500 focus:border-red-400"
+                        : "border-neutral-600 focus:border-emerald-500"
+                    }`}
+                  />
+                  {errors.correo && (
+                    <p className="text-red-400 text-xs mt-1">{errors.correo}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Teléfono y Asunto */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="telefono-desktop"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Teléfono (opcional)
+                  </label>
+                  <input
+                    type="tel"
+                    id="telefono-desktop"
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleInputChange}
+                    placeholder="Tu número de teléfono"
+                    className="w-full px-3 py-2 bg-transparent border-b-2 border-neutral-600 focus:border-emerald-500 focus:outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="asunto-desktop"
+                    className="block text-sm font-medium text-neutral-300 mb-1"
+                  >
+                    Asunto *
+                  </label>
+                  <input
+                    type="text"
+                    id="asunto-desktop"
+                    name="asunto"
+                    value={formData.asunto}
+                    onChange={handleInputChange}
+                    placeholder="Asunto del mensaje"
+                    className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
+                      errors.asunto
+                        ? "border-red-500 focus:border-red-400"
+                        : "border-neutral-600 focus:border-emerald-500"
+                    }`}
+                  />
+                  {errors.asunto && (
+                    <p className="text-red-400 text-xs mt-1">{errors.asunto}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Mensaje */}
               <div>
                 <label
-                  htmlFor="nombre"
+                  htmlFor="mensaje-desktop"
                   className="block text-sm font-medium text-neutral-300 mb-1"
                 >
-                  Nombre *
+                  Mensaje *
                 </label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  value={formData.nombre}
+                <textarea
+                  id="mensaje-desktop"
+                  name="mensaje"
+                  value={formData.mensaje}
                   onChange={handleInputChange}
-                  placeholder="Tu nombre"
-                  className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
-                    errors.nombre
+                  placeholder="Cuéntame sobre tu proyecto..."
+                  rows={5}
+                  className={`w-full px-3 py-2 bg-transparent border-2 rounded focus:outline-none transition-colors resize-none ${
+                    errors.mensaje
                       ? "border-red-500 focus:border-red-400"
                       : "border-neutral-600 focus:border-emerald-500"
                   }`}
                 />
-                {errors.nombre && (
-                  <p className="text-red-400 text-xs mt-1">{errors.nombre}</p>
+                {errors.mensaje && (
+                  <p className="text-red-400 text-xs mt-1">{errors.mensaje}</p>
                 )}
               </div>
 
-              <div>
-                <label
-                  htmlFor="correo"
-                  className="block text-sm font-medium text-neutral-300 mb-1"
-                >
-                  Correo electrónico *
-                </label>
-                <input
-                  type="email"
-                  id="correo"
-                  name="correo"
-                  value={formData.correo}
-                  onChange={handleInputChange}
-                  placeholder="Tu correo electrónico"
-                  className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
-                    errors.correo
-                      ? "border-red-500 focus:border-red-400"
-                      : "border-neutral-600 focus:border-emerald-500"
-                  }`}
-                />
-                {errors.correo && (
-                  <p className="text-red-400 text-xs mt-1">{errors.correo}</p>
-                )}
-              </div>
-            </div>
-
-            {/* Teléfono y Asunto */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label
-                  htmlFor="telefono"
-                  className="block text-sm font-medium text-neutral-300 mb-1"
-                >
-                  Teléfono (opcional)
-                </label>
-                <input
-                  type="tel"
-                  id="telefono"
-                  name="telefono"
-                  value={formData.telefono}
-                  onChange={handleInputChange}
-                  placeholder="Tu número de teléfono"
-                  className="w-full px-3 py-2 bg-transparent border-b-2 border-neutral-600 focus:border-emerald-500 focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="asunto"
-                  className="block text-sm font-medium text-neutral-300 mb-1"
-                >
-                  Asunto *
-                </label>
-                <input
-                  type="text"
-                  id="asunto"
-                  name="asunto"
-                  value={formData.asunto}
-                  onChange={handleInputChange}
-                  placeholder="Asunto del mensaje"
-                  className={`w-full px-3 py-2 bg-transparent border-b-2 focus:outline-none transition-colors ${
-                    errors.asunto
-                      ? "border-red-500 focus:border-red-400"
-                      : "border-neutral-600 focus:border-emerald-500"
-                  }`}
-                />
-                {errors.asunto && (
-                  <p className="text-red-400 text-xs mt-1">{errors.asunto}</p>
-                )}
-              </div>
-            </div>
-
-            {/* Mensaje */}
-            <div>
-              <label
-                htmlFor="mensaje"
-                className="block text-sm font-medium text-neutral-300 mb-1"
-              >
-                Mensaje *
-              </label>
-              <textarea
-                id="mensaje"
-                name="mensaje"
-                value={formData.mensaje}
-                onChange={handleInputChange}
-                placeholder="Cuéntame sobre tu proyecto..."
-                rows={5}
-                className={`w-full px-3 py-2 bg-transparent border-2 rounded focus:outline-none transition-colors resize-none ${
-                  errors.mensaje
-                    ? "border-red-500 focus:border-red-400"
-                    : "border-neutral-600 focus:border-emerald-500"
+              {/* Botón de envío */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
+                  isSubmitting
+                    ? "bg-neutral-600 text-neutral-400 cursor-not-allowed"
+                    : "bg-emerald-600 hover:bg-emerald-700 text-white hover:shadow-lg hover:shadow-emerald-500/25"
                 }`}
-              />
-              {errors.mensaje && (
-                <p className="text-red-400 text-xs mt-1">{errors.mensaje}</p>
-              )}
-            </div>
-
-            {/* Botón de envío */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
-                isSubmitting
-                  ? "bg-neutral-600 text-neutral-400 cursor-not-allowed"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white hover:shadow-lg hover:shadow-emerald-500/25"
-              }`}
-            >
-              {isSubmitting ? "Enviando..." : "Enviar mensaje"}
-            </button>
-          </form>
+              >
+                {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </SlideBase>
