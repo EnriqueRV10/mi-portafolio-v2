@@ -112,10 +112,10 @@ export default function SlidesContainer() {
           </div>
         </div>
 
-        {/* Navbar - lateral minimalista en móviles, inferior en desktop */}
-        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 sm:bottom-8 sm:left-1/2 sm:right-auto sm:top-auto sm:transform sm:-translate-x-1/2 sm:translate-y-0 z-10">
-          <div className="bg-neutral-800/5 backdrop-blur-xs border border-neutral-600/50 rounded-full px-1 py-2 sm:px-6 sm:py-3 sm:border-2 sm:border-neutral-700">
-            <div className="flex flex-col items-center gap-1 sm:flex-row sm:gap-4">
+        {/* Navbar - inferior tanto en móviles como en desktop */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="bg-neutral-800/5 backdrop-blur-xs border-2 border-neutral-700 rounded-full px-6 py-3">
+            <div className="flex flex-row items-center gap-4">
               {slides.map((slide, index) => {
                 const getIcon = (slideId: string) => {
                   switch (slideId) {

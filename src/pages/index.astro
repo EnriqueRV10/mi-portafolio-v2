@@ -5,7 +5,11 @@ import SlidesContainer from "../components/react/SlidesContainer";
 ---
 
 <Layout>
-  <div class="flex h-screen w-screen p-4 gap-4">
+  <!-- Contenedor principal con breakpoint ajustado para iPad -->
+  <div
+    class="flex h-screen w-screen p-4 gap-4
+              flex-col lg:flex-row"
+  >
     <!-- Formulario oculto para que Netlify lo registre -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="nombre" />
@@ -15,7 +19,10 @@ import SlidesContainer from "../components/react/SlidesContainer";
       <textarea name="mensaje"></textarea>
     </form>
 
+    <!-- SideBar - Oculto hasta lg (1024px) -->
     <SideBarCard />
+
+    <!-- Slides Container - Toma todo el ancho disponible -->
     <SlidesContainer client:load />
   </div>
 </Layout>
