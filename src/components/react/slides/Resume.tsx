@@ -25,42 +25,6 @@ function Resume() {
       className="lg:justify-start"
     >
       <div className="w-full max-w-4xl mx-auto space-y-8">
-        {/* Estadísticas principales */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {resumeStats.yearsExperience}+
-            </div>
-            <div className="text-xs lg:text-sm text-neutral-400">
-              Años de experiencia
-            </div>
-          </div>
-          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {resumeStats.projectsCompleted}+
-            </div>
-            <div className="text-xs lg:text-sm text-neutral-400">
-              Proyectos completados
-            </div>
-          </div>
-          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {resumeStats.technologiesMastered}+
-            </div>
-            <div className="text-xs lg:text-sm text-neutral-400">
-              Tecnologías dominadas
-            </div>
-          </div>
-          <div className="text-center p-3 lg:p-4 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {resumeStats.certifications}+
-            </div>
-            <div className="text-xs lg:text-sm text-neutral-400">
-              Certificaciones
-            </div>
-          </div>
-        </div>
-
         {/* Filtros funcionales */}
         <div className="flex justify-center">
           <div className="flex bg-neutral-800 rounded-lg p-1 overflow-x-auto">

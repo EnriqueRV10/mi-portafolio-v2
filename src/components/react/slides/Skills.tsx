@@ -55,46 +55,6 @@ function Skills() {
       className="lg:justify-start"
     >
       <div className="w-full max-w-6xl mx-auto space-y-8">
-        {/* Estadísticas principales */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 lg:gap-4 p-4 bg-neutral-800/50 rounded-lg border border-neutral-700">
-          <div className="text-center p-3 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {skillStats.total}
-            </div>
-            <div className="text-xs text-neutral-400">Tecnologías</div>
-          </div>
-          <div className="text-center p-3 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {skillStats.expert}
-            </div>
-            <div className="text-xs text-neutral-400">Nivel Experto</div>
-          </div>
-          <div className="text-center p-3 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {skillStats.certifications}
-            </div>
-            <div className="text-xs text-neutral-400">Certificadas</div>
-          </div>
-          <div className="text-center p-3 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {skillStats.totalProjects}+
-            </div>
-            <div className="text-xs text-neutral-400">Proyectos</div>
-          </div>
-          <div className="text-center p-3 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {skillStats.avgExperience}
-            </div>
-            <div className="text-xs text-neutral-400">Años Prom.</div>
-          </div>
-          <div className="text-center p-3 bg-neutral-800 rounded-lg">
-            <div className="text-xl lg:text-2xl font-bold text-emerald-500">
-              {skillCategories.length}
-            </div>
-            <div className="text-xs text-neutral-400">Categorías</div>
-          </div>
-        </div>
-
         {/* Selector de vista */}
         <div className="flex justify-center">
           <div className="flex bg-neutral-800 rounded-lg p-1">
