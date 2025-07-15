@@ -1,3 +1,4 @@
+// components/react/SpecializationCard.tsx
 import React from "react";
 import type { SpecializationArea } from "./types/skills";
 
@@ -17,9 +18,6 @@ const SpecializationCard: React.FC<SpecializationCardProps> = ({
           ? "bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border-2 border-emerald-500/30 hover:border-emerald-500/50"
           : "bg-neutral-800 border border-neutral-700 hover:border-emerald-500/30"
       }`}
-      style={{
-        animationDelay: `${index * 100}ms`,
-      }}
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
@@ -63,9 +61,6 @@ const SpecializationCard: React.FC<SpecializationCardProps> = ({
                   ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
                   : "bg-neutral-700 text-neutral-300 hover:bg-neutral-600"
               }`}
-              style={{
-                animationDelay: `${index * 100 + skillIndex * 50}ms`,
-              }}
             >
               {skill}
             </span>

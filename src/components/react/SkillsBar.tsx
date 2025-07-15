@@ -143,6 +143,7 @@ const SkillBar: React.FC<SkillBarProps> = ({
             style={{
               width: `${animatedLevel}%`,
               transform: isInView ? "scaleX(1)" : "scaleX(0)",
+              transformOrigin: "left",
             }}
           />
         </div>

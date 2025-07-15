@@ -1,3 +1,4 @@
+// components/react/slides/Skills.tsx
 import React, { useState } from "react";
 import SlideBase from "../SlideBase";
 import SkillBar from "../SkillsBar";
@@ -8,7 +9,6 @@ import {
   skillCategories,
   specializationAreas,
 } from "../data/skillsData";
-import type { SkillFilter } from "../types/skills";
 
 function Skills() {
   const { activeFilter, setActiveFilter, filteredItems } = useFilter(
@@ -132,7 +132,7 @@ function Skills() {
                 {filterOptions.map((option) => (
                   <button
                     key={option.id}
-                    onClick={() => setActiveFilter(option.id as SkillFilter)}
+                    onClick={() => setActiveFilter(option.id)}
                     className={`px-3 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm font-medium rounded-md transition-all duration-200 whitespace-nowrap flex items-center gap-2 ${
                       activeFilter === option.id
                         ? "text-white bg-emerald-500 shadow-lg"

@@ -27,5 +27,3 @@ export interface SpecializationArea {
   skills: string[];
   highlight?: boolean;
 }
-
-export type SkillFilter = "all" | string;

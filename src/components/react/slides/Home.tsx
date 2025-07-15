@@ -1,4 +1,3 @@
-// components/react/slides/Home.tsx
 import React, { useState, useEffect } from "react";
 import SlideBase from "../SlideBase";
 import ProfileImage from "../ProfileImage";
@@ -54,7 +53,7 @@ function Home({ navigateToSlide }: HomeProps) {
         <div className="text-center lg:text-left">
           <div className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
             <span className="text-white">¡Hola! Soy </span>
-            <span className="text-emerald-500 bg-gradient-to-r from-emerald-500 to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-500 to-emerald-400 bg-clip-text text-transparent">
               Sergio Enrique
             </span>
           </div>
@@ -75,6 +74,22 @@ function Home({ navigateToSlide }: HomeProps) {
           </p>
         </div>
 
+        {/* Estadísticas rápidas */}
+        {/* <div className="grid grid-cols-3 gap-4 lg:gap-6 max-w-md mx-auto lg:mx-0">
+          <div className="text-center lg:text-left bg-neutral-800/50 rounded-lg p-4 border border-neutral-700">
+            <div className="text-2xl font-bold text-emerald-500">2+</div>
+            <div className="text-xs text-neutral-400">Años exp.</div>
+          </div>
+          <div className="text-center lg:text-left bg-neutral-800/50 rounded-lg p-4 border border-neutral-700">
+            <div className="text-2xl font-bold text-emerald-500">8+</div>
+            <div className="text-xs text-neutral-400">Proyectos</div>
+          </div>
+          <div className="text-center lg:text-left bg-neutral-800/50 rounded-lg p-4 border border-neutral-700">
+            <div className="text-2xl font-bold text-emerald-500">12+</div>
+            <div className="text-xs text-neutral-400">Tecnologías</div>
+          </div>
+        </div> */}
+
         {/* Botones de acción */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
           <button
@@ -83,7 +98,7 @@ function Home({ navigateToSlide }: HomeProps) {
           >
             Ver Proyectos
           </button>
-          {/* 
+
           <button
             onClick={handleDownloadCV}
             disabled={isDownloading || isChecking}
@@ -162,8 +177,32 @@ function Home({ navigateToSlide }: HomeProps) {
                 CV Próximamente
               </>
             )}
-          </button> */}
+          </button>
         </div>
+
+        {/* Especialidades clave */}
+        {/* <div className="hidden lg:block max-w-2xl">
+          <h3 className="text-lg font-semibold text-white mb-4">
+            Especialidades
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {[
+              "React & Next.js",
+              "TypeScript",
+              "Tailwind CSS",
+              "React Native",
+              "Responsive Design",
+              "Performance Optimization",
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-2 bg-neutral-800 text-neutral-300 rounded-lg border border-neutral-700 hover:border-emerald-500/30 hover:text-emerald-400 transition-colors text-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div> */}
 
         {/* Notificación de error */}
         {showError && error && (
