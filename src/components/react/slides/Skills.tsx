@@ -8,6 +8,8 @@ import {
   skills,
   skillCategories,
   specializationAreas,
+  getSkillIcon,
+  getSkillIconWithCategoryColor,
 } from "../data/skillsData";
 
 function Skills() {
@@ -19,13 +21,18 @@ function Skills() {
     "skills",
   );
 
-  // Configuración de filtros
+  // Configuración de filtros con iconos SVG
   const filterOptions = [
-    { id: "all", label: "Todas", icon: "🎯", count: skills.length },
+    {
+      id: "all",
+      label: "Todas",
+      icon: getSkillIcon("all", { fallbackEmoji: "🎯" }),
+      count: skills.length,
+    },
     ...skillCategories.map((cat) => ({
       id: cat.id,
       label: cat.name,
-      icon: cat.icon,
+      icon: getSkillIconWithCategoryColor(cat.id, cat.color, cat.icon),
       count: skills.filter((skill) => skill.category.id === cat.id).length,
     })),
   ];
@@ -66,7 +73,12 @@ function Skills() {
                   : "text-neutral-400 hover:text-white hover:bg-neutral-700"
               }`}
             >
-              <span>📊</span>
+              <span className="flex items-center">
+                {getSkillIcon("skills", {
+                  fallbackEmoji: "📊",
+                  size: "w-4 h-4",
+                })}
+              </span>
               <span>Habilidades Técnicas</span>
             </button>
             <button
@@ -77,7 +89,12 @@ function Skills() {
                   : "text-neutral-400 hover:text-white hover:bg-neutral-700"
               }`}
             >
-              <span>🎯</span>
+              <span className="flex items-center">
+                {getSkillIcon("specializations", {
+                  fallbackEmoji: "🎯",
+                  size: "w-4 h-4",
+                })}
+              </span>
               <span>Especializaciones</span>
             </button>
           </div>
@@ -99,7 +116,7 @@ function Skills() {
                         : "text-neutral-400 hover:text-white hover:bg-neutral-700"
                     }`}
                   >
-                    <span>{option.icon}</span>
+                    <span className="flex items-center">{option.icon}</span>
                     <span>{option.label}</span>
                     <span
                       className={`text-xs px-1.5 py-0.5 rounded-full ${
@@ -123,7 +140,13 @@ function Skills() {
                 ))
               ) : (
                 <div className="col-span-full text-center py-12">
-                  <div className="text-6xl mb-4">🔍</div>
+                  <div className="text-6xl mb-4 flex justify-center">
+                    {getSkillIcon("search", {
+                      fallbackEmoji: "🔍",
+                      size: "w-16 h-16",
+                      className: "text-neutral-500",
+                    })}
+                  </div>
                   <h3 className="text-xl font-semibold text-white mb-2">
                     No hay habilidades en esta categoría
                   </h3>
@@ -187,7 +210,12 @@ function Skills() {
         {/* Sección de crecimiento continuo */}
         <div className="bg-gradient-to-r from-emerald-500/10 to-emerald-600/5 border border-emerald-500/30 rounded-lg p-6">
           <div className="flex items-start gap-4">
-            <div className="text-3xl">🚀</div>
+            <div className="text-3xl flex items-center text-emerald-400">
+              {getSkillIcon("growth", {
+                fallbackEmoji: "🚀",
+                size: "w-8 h-8",
+              })}
+            </div>
             <div>
               <h3 className="text-white font-semibold mb-2">
                 Aprendizaje Continuo

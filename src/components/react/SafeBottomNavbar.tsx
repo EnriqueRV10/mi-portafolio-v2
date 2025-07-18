@@ -15,7 +15,7 @@ export default function SafeBottomNavbar({
   const safeArea = useSafeArea();
 
   // Calcular posición dinámica basada en safe area
-  const bottomOffset = Math.max(32, safeArea.bottom + 12); // Mínimo 32px (2rem)
+  const bottomOffset = Math.max(12, safeArea.bottom + 12); // Mínimo 32px (2rem)
 
   return (
     <div

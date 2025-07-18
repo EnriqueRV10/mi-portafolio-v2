@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import type { Skill } from "./types/skills";
+import {
+  getSkillIconWithBrandColor,
+  getSkillIconWithCategoryColor,
+} from "./data/skillsData";
 
 interface SkillBarProps {
   skill: Skill;
@@ -102,9 +106,10 @@ const SkillBar: React.FC<SkillBarProps> = ({
       {/* Header con icono y nombre */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
-          <span className="text-2xl" role="img" aria-label={skill.name}>
-            {skill.icon}
-          </span>
+          <div className="flex items-center justify-center w-8 h-8">
+            {/* Usar icono con color de marca para mejor autenticidad */}
+            {getSkillIconWithBrandColor(skill.id, skill.icon)}
+          </div>
           <div>
             <h3 className="text-white font-semibold text-lg group-hover:text-emerald-300 transition-colors">
               {skill.name}
