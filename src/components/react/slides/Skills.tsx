@@ -1,4 +1,3 @@
-// components/react/slides/Skills.tsx
 import React, { useState } from "react";
 import SlideBase from "../SlideBase";
 import SkillBar from "../SkillsBar";
@@ -8,8 +7,6 @@ import {
   skills,
   skillCategories,
   specializationAreas,
-  getSkillIcon,
-  getSkillIconWithCategoryColor,
 } from "../data/skillsData";
 
 function Skills() {
@@ -21,18 +18,16 @@ function Skills() {
     "skills",
   );
 
-  // Configuración de filtros con iconos SVG
+  // Configuración de filtros
   const filterOptions = [
     {
       id: "all",
       label: "Todas",
-      icon: getSkillIcon("all", { fallbackEmoji: "🎯" }),
       count: skills.length,
     },
     ...skillCategories.map((cat) => ({
       id: cat.id,
       label: cat.name,
-      icon: getSkillIconWithCategoryColor(cat.id, cat.color, cat.icon),
       count: skills.filter((skill) => skill.category.id === cat.id).length,
     })),
   ];
@@ -73,12 +68,6 @@ function Skills() {
                   : "text-neutral-400 hover:text-white hover:bg-neutral-700"
               }`}
             >
-              <span className="flex items-center">
-                {getSkillIcon("skills", {
-                  fallbackEmoji: "📊",
-                  size: "w-4 h-4",
-                })}
-              </span>
               <span>Habilidades Técnicas</span>
             </button>
             <button
@@ -89,12 +78,6 @@ function Skills() {
                   : "text-neutral-400 hover:text-white hover:bg-neutral-700"
               }`}
             >
-              <span className="flex items-center">
-                {getSkillIcon("specializations", {
-                  fallbackEmoji: "🎯",
-                  size: "w-4 h-4",
-                })}
-              </span>
               <span>Especializaciones</span>
             </button>
           </div>
@@ -116,7 +99,6 @@ function Skills() {
                         : "text-neutral-400 hover:text-white hover:bg-neutral-700"
                     }`}
                   >
-                    <span className="flex items-center">{option.icon}</span>
                     <span>{option.label}</span>
                     <span
                       className={`text-xs px-1.5 py-0.5 rounded-full ${
@@ -133,20 +115,13 @@ function Skills() {
             </div>
 
             {/* Grid de habilidades */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredItems.length > 0 ? (
                 filteredItems.map((skill, index) => (
                   <SkillBar key={skill.id} skill={skill} index={index} />
                 ))
               ) : (
                 <div className="col-span-full text-center py-12">
-                  <div className="text-6xl mb-4 flex justify-center">
-                    {getSkillIcon("search", {
-                      fallbackEmoji: "🔍",
-                      size: "w-16 h-16",
-                      className: "text-neutral-500",
-                    })}
-                  </div>
                   <h3 className="text-xl font-semibold text-white mb-2">
                     No hay habilidades en esta categoría
                   </h3>
@@ -210,12 +185,6 @@ function Skills() {
         {/* Sección de crecimiento continuo */}
         <div className="bg-gradient-to-r from-emerald-500/10 to-emerald-600/5 border border-emerald-500/30 rounded-lg p-6">
           <div className="flex items-start gap-4">
-            <div className="text-3xl flex items-center text-emerald-400">
-              {getSkillIcon("growth", {
-                fallbackEmoji: "🚀",
-                size: "w-8 h-8",
-              })}
-            </div>
             <div>
               <h3 className="text-white font-semibold mb-2">
                 Aprendizaje Continuo

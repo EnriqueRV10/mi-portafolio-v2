@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import type { SpecializationArea } from "./types/skills";
-import { getSkillIcon } from "./data/skillsData";
+import { Icon } from "@iconify/react";
 
 interface SpecializationCardProps {
   area: SpecializationArea;
@@ -32,29 +32,10 @@ const SpecializationCard: React.FC<SpecializationCardProps> = ({
     return () => observer.disconnect();
   }, []);
 
-  // Mapeo de iconos de especialización a iconos SVG
-  const getSpecializationIcon = (areaId: string, fallbackIcon: string) => {
-    const specializationIconMap: { [key: string]: string } = {
-      "frontend-dev": "frontend",
-      "mobile-dev": "mobile",
-      "responsive-design": "design",
-      performance: "tools",
-      "full-stack": "all",
-      "modern-tools": "tools",
-    };
-
-    const iconKey = specializationIconMap[areaId];
-    return getSkillIcon(iconKey, {
-      fallbackEmoji: fallbackIcon,
-      size: "w-6 h-6",
-      className: "text-emerald-400",
-    });
-  };
-
   return (
     <div
       ref={cardRef}
-      className={`group relative p-6 bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-lg border border-neutral-700 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-emerald-500/10 ${
+      className={`flex flex-col justify-between group relative p-6 bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-lg border border-neutral-700 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-emerald-500/10 ${
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       } ${area.highlight ? "ring-1 ring-emerald-500/30" : ""}`}
       style={{
@@ -64,7 +45,7 @@ const SpecializationCard: React.FC<SpecializationCardProps> = ({
       {/* Icono y título */}
       <div className="flex items-start gap-4 mb-4">
         <div className="flex-shrink-0 w-12 h-12 bg-emerald-500/10 rounded-lg flex items-center justify-center border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
-          {getSpecializationIcon(area.id, area.icon)}
+          {/* {getSpecializationIcon(area.id, area.icon)} */}
         </div>
         <div className="flex-1">
           <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors">

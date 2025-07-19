@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import type { Skill } from "./types/skills";
-import {
-  getSkillIconWithBrandColor,
-  getSkillIconWithCategoryColor,
-} from "./data/skillsData";
+import { Icon } from "@iconify/react";
 
 interface SkillBarProps {
   skill: Skill;
@@ -91,7 +88,7 @@ const SkillBar: React.FC<SkillBarProps> = ({
   return (
     <div
       ref={skillRef}
-      className={`group p-4 bg-neutral-800 rounded-lg border border-neutral-700 hover:border-opacity-50 transition-all duration-300 hover:${colors.glow} hover:shadow-lg ${
+      className={`flex flex-col justify-between group p-4 bg-neutral-800 rounded-lg border border-neutral-700 hover:border-opacity-50 transition-all duration-300 hover:${colors.glow} hover:shadow-lg ${
         skill.category.color === "emerald"
           ? "hover:border-emerald-500/50"
           : skill.category.color === "blue"
@@ -106,9 +103,13 @@ const SkillBar: React.FC<SkillBarProps> = ({
       {/* Header con icono y nombre */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-8 h-8">
-            {/* Usar icono con color de marca para mejor autenticidad */}
-            {getSkillIconWithBrandColor(skill.id, skill.icon)}
+          {/* Colocar icono */}
+          <div>
+            {skill.icon ? (
+              <Icon icon={`${skill.icon}`} className="w-10 h-10" />
+            ) : (
+              <span className="text-2xl">{skill.category.icon}</span>
+            )}
           </div>
           <div>
             <h3 className="text-white font-semibold text-lg group-hover:text-emerald-300 transition-colors">
